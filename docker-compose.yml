@@ -1,0 +1,32 @@
+version: "3.7"
+
+services:
+  influxdb:
+    image: "influxdb"
+    ports:
+      - "8086:8086"
+    user: "1000:1000"
+    volumes:
+      - $PWD/influxdb:/var/lib/influxdb
+    network_mode: host
+    restart: always
+
+  grafana:
+    image: "grafana/grafana"
+    ports:
+      - "3000:3000"
+    user: "472"
+    volumes:
+      - $PWD/grafana/data:/var/lib/grafana
+      - $PWD/grafana/provisioning:/etc/grafana/provisioning
+
+    network_mode: host
+    restart: always
+
+  broker-mosquitoo:
+    image: "eclipse-mosquitto"
+    ports:
+      - "1883:1883"
+    user: "1000:1000"
+    network_mode: host
+    restart: always
