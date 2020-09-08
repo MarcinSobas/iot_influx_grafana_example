@@ -27,7 +27,7 @@ class IoDeviceDataDbWriter(Observer):
         self.client = client
 
     def notify(self, data):
-        # print(data)
+        print(data)
         try:
             self.client.write_points(self._load_points(data))
 

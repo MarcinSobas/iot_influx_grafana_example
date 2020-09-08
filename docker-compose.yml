@@ -5,7 +5,7 @@ services:
     image: "influxdb"
     ports:
       - "8086:8086"
-    user: "1000:1000"
+
     volumes:
       - $PWD/influxdb:/var/lib/influxdb
     network_mode: host
@@ -27,6 +27,5 @@ services:
     image: "eclipse-mosquitto"
     ports:
       - "1883:1883"
-    user: "1000:1000"
     network_mode: host
     restart: always

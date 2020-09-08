@@ -10,7 +10,7 @@ DEVICE_ID = "rpi_1"
 DEVICE_INFO_TOPIC = f"device/{DEVICE_ID}/info"
 
 BROKER_HOST = "0.0.0.0"
-BROKER_PORT = 1886
+BROKER_PORT = 1883
 
 # utworzenie instancji klienta
 client = mqtt.Client()
