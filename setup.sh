@@ -17,4 +17,4 @@ sudo chown -R 0:0 .env/grafana/provisioning
 #--------------------
 
 # uruchomienie serwisów
-docker-compose -f "docker-compose.yml" up -d --build
+docker-compose -f "docker-compose.yml" up -d
