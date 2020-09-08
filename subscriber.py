@@ -64,7 +64,6 @@ class IoDeviceDataDbWriter(Observer):
             "tags": {
                 "host": host_id
             },
-            "time": timestamp,
             "fields": fields
         }
 
@@ -97,13 +96,15 @@ class IoTDeviceInfoSubScriber:
         for observer in self.observers:
             observer.notify(data)
 
-
+# tworzymy klienta bazy
 db_client = InfluxDBClient(DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_NAME)
+# tworzymy baze jak nie istnieje
 db_client.create_database(DB_NAME)
-
+# handler wprowadzajacy dane do abzy
 data_db_writer = IoDeviceDataDbWriter(db_client)
-
+# tworzymy subsc
 subscriber = IoTDeviceInfoSubScriber()
+# dodajemy obserwatora odebranych danych
 subscriber.register_new_data_observer(data_db_writer)
-
+# uruchamiamy subs 
 subscriber.run(BROKER_HOST, BROKER_PORT)
