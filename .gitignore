@@ -1,3 +1,2 @@
-grafana
-influxdb
 .vscode
+.env

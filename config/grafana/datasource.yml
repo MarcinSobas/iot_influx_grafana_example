@@ -4,7 +4,7 @@ datasources:
   - name: InfluxDB
     type: influxdb
     access: proxy
-    database: test
+    database: io_device_info
     user: root
     password: root
     url: http://0.0.0.0:8086

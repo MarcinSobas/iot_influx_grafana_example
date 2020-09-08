@@ -13,7 +13,7 @@ DB_HOST = "localhost"
 DB_PORT = 8086
 DB_USER = "root"
 DB_PASSWORD = "root"
-DB_NAME = "test"
+DB_NAME = "io_device_info"
 
 
 class Observer(ABC):
@@ -31,12 +31,11 @@ class IoDeviceDataDbWriter(Observer):
         try:
             self.client.write_points(self._load_points(data))
 
-            # result = self.client.query('select * from device_utilization')
-            # print("Result: {0}".format(result))
-
-            # result = self.client.query('select * from device_temperature')
+            # result = self.client.query(
+            #     'select * from device_temperature order by time desc limit 1;')
             # print("Result: {0}".format(result))
         except Exception as e:
+            print('exception')
             print(e)
 
     def _load_points(self, data):
